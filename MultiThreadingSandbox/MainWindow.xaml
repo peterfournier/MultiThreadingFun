@@ -1,0 +1,143 @@
+﻿<Window x:Class="MultiThreadingSandbox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MultiThreadingSandbox"
+        mc:Ignorable="d"
+        x:Name="window"
+        Title="MainWindow" Height="720" Width="1080">
+    <Grid
+        Margin="10"
+        >
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".5*" />
+            <ColumnDefinition Width=".5*" />
+        </Grid.ColumnDefinitions>
+        
+        
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <StackPanel 
+            Grid.ColumnSpan="2"
+            Orientation="Horizontal"
+            >
+            <StackPanel
+                Margin="0,10"
+                >
+                <Label
+                    FontWeight="SemiBold"
+                    Margin="0,0,10,0"
+                    >Number of Tasks:</Label>
+                <TextBox
+                    Margin="0,0,10,0"
+                    x:Name="tbNumberOfTasks"
+                    Width="50"
+                    >10</TextBox>
+            </StackPanel>
+
+            <StackPanel
+                Margin="0,10"
+                >
+                <Label FontWeight="SemiBold">Response time in milliseconds</Label>
+                <StackPanel
+                    Orientation="Horizontal">
+                    <Label>Min:</Label>
+                    <TextBox
+                        Margin="0,0,10,0"
+                        x:Name="tbMinResponse"
+                        VerticalContentAlignment="Center"
+                        VerticalAlignment="Center"
+                        Width="50"
+                        >1000</TextBox>
+                </StackPanel>
+                <StackPanel
+                    Orientation="Horizontal">
+                    <Label>Max:</Label>
+                    <TextBox
+                        Margin="0,0,10,0"
+                        x:Name="tbMaxResponse"
+                        VerticalContentAlignment="Center"
+                        VerticalAlignment="Center"
+                        Width="50"
+                        >3000</TextBox>
+
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>
+        <Button
+            Margin="0,10"
+            Grid.Column="1"
+            x:Name="btnClear"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            Click="BtnClear_Click"
+            Padding="10"
+            >
+            Clear
+        </Button>
+
+        <!--column 1-->
+        <Button
+            Margin="0,10"
+            Grid.Row="1"
+            x:Name="btnRunAllAsync"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Width="200"
+            Click="BtnRunAllAsync_Click"
+            >
+            Run Jobs Async
+        </Button>
+        <ScrollViewer
+            Grid.Row="2"
+            >
+            <TextBlock
+                VerticalAlignment="Stretch"
+                Background="SlateGray"
+                Padding="10"
+                FontFamily="Consolas"
+                FontSize="14"
+                Text="{Binding AsyncOutput}"
+                >
+            </TextBlock>
+        </ScrollViewer>
+
+        <!--column 2-->
+        
+        <Button
+            Margin="0,10"
+            Grid.Row="1"
+            Grid.Column="1"
+            x:Name="btnRunAllSync"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Width="200"
+            Click="BtnRunAllSync_Click"
+            >
+            Run Jobs Synchronously
+        </Button>
+
+        <ScrollViewer
+            Grid.Row="2"
+            Grid.Column="1"
+            >
+            <TextBlock
+                VerticalAlignment="Stretch"
+                Background="SlateGray"
+                Padding="10"
+                FontFamily="Consolas"
+                FontSize="14"
+                Text="{Binding SyncOutput}"
+                >
+            </TextBlock>
+        </ScrollViewer>
+    </Grid>
+</Window>
